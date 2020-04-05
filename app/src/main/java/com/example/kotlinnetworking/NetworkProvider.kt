@@ -1,10 +1,21 @@
 package com.example.kotlinnetworking
 
+import com.example.kotlinnetworking.BuildConfig.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.logging.Level
 
 object NetworkProvider{
+
+    fun providesHttpAdapter(): Retrofit {
+        return Retrofit.Builder().apply {
+            client(providesHtppClient())
+            baseUrl(BASE_URL)
+            addConverterFactory(GsonConverterFactory.create())
+        }.build()
+    }
 
     private fun providesHtppClient(): OkHttpClient{
         return OkHttpClient.Builder().apply {
