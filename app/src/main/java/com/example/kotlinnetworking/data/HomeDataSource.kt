@@ -1,6 +1,6 @@
-package com.example.kotlinnetworking
+package com.example.kotlinnetworking.data
 
-import android.telecom.Call
+import com.example.kotlinnetworking.BuildConfig
 import retrofit2.http.GET
 import retrofit2.http.Query
 

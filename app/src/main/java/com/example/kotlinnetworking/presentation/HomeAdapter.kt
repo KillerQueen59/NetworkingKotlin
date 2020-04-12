@@ -1,16 +1,17 @@
-package com.example.kotlinnetworking
+package com.example.kotlinnetworking.presentation
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.kotlinnetworking.HomeAdapter.HomeViewHolder
-import org.w3c.dom.Text
+import com.example.kotlinnetworking.R
+import com.example.kotlinnetworking.presentation.HomeAdapter.HomeViewHolder
+import com.example.kotlinnetworking.data.Result
 
 class HomeAdapter (private val results: List<Result>) : RecyclerView.Adapter<HomeViewHolder>() {
 
@@ -25,6 +26,7 @@ class HomeAdapter (private val results: List<Result>) : RecyclerView.Adapter<Hom
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+        Log.d("ojan","berhasil Adapter")
         holder.bind(results[holder.adapterPosition])
     }
 
@@ -43,7 +45,6 @@ class HomeAdapter (private val results: List<Result>) : RecyclerView.Adapter<Hom
                     .load("https://image.tmdb.org/t/p/original/" + result.poster )
                     .apply(RequestOptions.overrideOf(200,250))
                     .into(image)
-
             }
         }
     }
