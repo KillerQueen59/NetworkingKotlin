@@ -8,10 +8,14 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinnetworking.R
 import com.example.kotlinnetworking.data.Result
+import dagger.Module
 import kotlinx.android.synthetic.main.activity_home.*
+import javax.inject.Inject
 
-class HomeActivity : AppCompatActivity() , HomeView {
+class HomeActivity : AppCompatActivity() ,  HomeView {
 
+    @Inject
+    lateinit var presenter: HomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,11 +23,8 @@ class HomeActivity : AppCompatActivity() , HomeView {
 
         rv_movie.setHasFixedSize(true)
         rv_movie.layoutManager = LinearLayoutManager(this)
-        val presenter = HomePresenter(this)
+
         presenter.discoverMovie()
-
-
-
     }
     override fun onShowLoading() {
         progressBar.visibility = View.VISIBLE
