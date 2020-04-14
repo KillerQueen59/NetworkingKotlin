@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinnetworking.R
 import com.example.kotlinnetworking.data.Result
 import dagger.Module
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
-class HomeActivity : AppCompatActivity() ,  HomeView {
+class HomeActivity : DaggerAppCompatActivity() ,  HomeView {
 
     @Inject
-    lateinit var presenter: HomePresenter
+    lateinit var presenter : HomePresenter // lateinit buat non null type dengan dependency injection
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
