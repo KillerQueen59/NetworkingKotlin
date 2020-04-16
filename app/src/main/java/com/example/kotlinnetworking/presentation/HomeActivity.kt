@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinnetworking.R
 import com.example.kotlinnetworking.data.Result
 import dagger.Module
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
-class HomeActivity : AppCompatActivity() ,  HomeView {
+class HomeActivity : DaggerAppCompatActivity() ,  HomeView {
 
-    @Inject
-    lateinit var presenter: HomePresenter
+    @Inject lateinit var presenter: HomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +25,11 @@ class HomeActivity : AppCompatActivity() ,  HomeView {
         rv_movie.layoutManager = LinearLayoutManager(this)
 
         presenter.discoverMovie()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDetach()
     }
     override fun onShowLoading() {
         progressBar.visibility = View.VISIBLE

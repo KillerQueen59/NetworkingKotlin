@@ -13,4 +13,8 @@ interface HomeDataSource {
         @Query("api_key")
         apiKey:String = BuildConfig.API_KEY
     ): Single<HomeResponse> // mengganti fungsi retrofit dengan rxJava
+    /*Stream yang digunakan untuk melakukan proses threading, yang
+    dimana output dari proses tersebut hanya terdapat 1 thread saja sehingga
+    bisa dikatakan lebih ringan dan tidak membebani pemakaian memori yang
+    cukup besar untuk melakukan proses thread*/
 }

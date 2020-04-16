@@ -22,7 +22,7 @@ class HomePresenter (
     fun discoverMovie(){
         view.onShowLoading()
         dataSource.discoverMovie()
-            .observeOn(AndroidSchedulers.mainThread())
+            .observeOn(AndroidSchedulers.mainThread()) // 
             .subscribe({response ->
                 view.onHideLoading()
                 view.onResponse(response.result)
