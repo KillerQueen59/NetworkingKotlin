@@ -15,7 +15,8 @@ import javax.inject.Inject
 
 class HomeActivity : DaggerAppCompatActivity() ,  HomeView {
 
-    @Inject lateinit var presenter: HomePresenter
+    @Inject
+    lateinit var presenter : HomePresenter // lateinit buat non null type dengan dependency injection
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +26,6 @@ class HomeActivity : DaggerAppCompatActivity() ,  HomeView {
         rv_movie.layoutManager = LinearLayoutManager(this)
 
         presenter.discoverMovie()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.onDetach()
     }
     override fun onShowLoading() {
         progressBar.visibility = View.VISIBLE
